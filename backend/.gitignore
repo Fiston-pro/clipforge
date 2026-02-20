@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+
+# Background videos (too large for git — place manually per README)
+assets/*.mp4
+assets/*.mov
+assets/videos/
+
+# Temp files
+/tmp/
+*.mp3
+*.mp4
+*.mov
+
+# macOS
+.DS_Store

@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0a;
+  --card: #111111;
+  --border: #222222;
+  --muted: #888888;
+  --red: #ee1d52;
+  --purple: #7000ff;
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrollbar on dark backgrounds */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #111;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+/* Remove browser default video controls ugly ring */
+video:focus {
+  outline: none;
+}
