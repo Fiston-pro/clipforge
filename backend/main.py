@@ -54,6 +54,16 @@ MAX_SCRIPT_CHARS: int = int(os.getenv("MAX_SCRIPT_CHARS", "2200"))
 async def lifespan(app: FastAPI):
     Path(TEMP_DIR).mkdir(parents=True, exist_ok=True)
 
+    # Download background video from URL if env var is set and file is missing
+    bg_url: str = os.getenv("BACKGROUND_VIDEO_URL", "")
+    bg_path = Path(os.getenv("BACKGROUND_VIDEO_PATH", "./assets/background.mp4"))
+    if bg_url and not bg_path.exists():
+        print(f"[Startup] Downloading background video from {bg_url} ...")
+        import urllib.request
+        bg_path.parent.mkdir(parents=True, exist_ok=True)
+        await asyncio.to_thread(urllib.request.urlretrieve, bg_url, str(bg_path))
+        print(f"[Startup] Background video saved to {bg_path}")
+
     if not Path(FONT_PATH).exists():
         print(
             f"[WARNING] Font not found at {FONT_PATH}\n"
