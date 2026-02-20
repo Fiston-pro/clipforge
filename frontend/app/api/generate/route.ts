@@ -7,8 +7,9 @@
 
 import { NextRequest, NextResponse } from "next/server";
 
-const BACKEND_URL =
-  process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:8000";
+const raw = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:8000";
+// Ensure the URL always has a protocol prefix so fetch() doesn't throw
+const BACKEND_URL = raw.startsWith("http") ? raw : `https://${raw}`;
 
 export async function POST(request: NextRequest) {
   try {
